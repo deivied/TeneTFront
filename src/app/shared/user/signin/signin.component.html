@@ -1,0 +1,37 @@
+<div class="py-5 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-md-6 col-10 p-5">
+        <h2 class="mb-4 text-warning">Connexion</h2>
+        <form [formGroup]="formSignIn">
+          <div class="form-group mb-3">
+            <input type="email" class="form-control" placeholder="Entrer votre email" formControlName="email" id="login" name="email" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Mot de passe" required>
+          </div>
+          <div class="form-group mb-3">
+            <select class="form-control" formControlName="profil" id="profil" name="profil"> Profil
+              <option>admin</option>
+              <option>user</option>
+            </select>
+          </div>
+          <div class="">
+            <button type="submit" class="btn btn-warning" (click)="onSignIn()" >Connexion </button>
+          </div>
+          <p class="text-danger" *ngIf="errorMsg">
+            {{errorMsg}}
+          </p>
+        </form>
+        <p class="text-right form-text"> Vous êtes nouveau,
+          <a (click)="onClick()" routerLink="/signUp" routerLinkActive="active" >
+            Inscrivez vous!
+          </a>
+          <app-loading-spinner *ngIf="isLoading && !errorMsg"></app-loading-spinner>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
