@@ -4,10 +4,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './shared/user/user.module';
-import { LayoutModule } from './layout/layout.module';
+import { ComponentModule } from './component/component.module';
+import {SigninComponent} from "./signin/signin.component";
+import {RegisterComponent} from "./register/register.component";
+import {NavBarComponent} from "./nav-bar/nav-bar.component";
+import { HomesComponent } from './homes/homes.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [
+    SigninComponent,
+    RegisterComponent,
+    NavBarComponent,
+    HomesComponent,
     AppComponent,
   ],
   imports: [
@@ -15,9 +26,13 @@ import { LayoutModule } from './layout/layout.module';
     AppRoutingModule,
     ReactiveFormsModule,
     UserModule,
-    LayoutModule
+    ComponentModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

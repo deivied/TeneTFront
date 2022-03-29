@@ -5,6 +5,7 @@ export interface IUser{
   email: string
   numero: string
   profil: string
-  password: string
+  isGranted: boolean
+  password?: string
   token:string
 }

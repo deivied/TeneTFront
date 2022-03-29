@@ -20,17 +20,20 @@
           <div class="">
             <button type="submit" class="btn btn-warning" (click)="onSignIn()" >Connexion </button>
           </div>
-          <p class="text-danger" *ngIf="errorMsg">
-            {{errorMsg}}
-          </p>
         </form>
         <p class="text-right form-text"> Vous êtes nouveau,
-          <a (click)="onClick()" routerLink="/signUp" routerLinkActive="active" >
+          <a routerLink="/signUp" routerLinkActive="active" >
             Inscrivez vous!
           </a>
           <app-loading-spinner *ngIf="isLoading && !errorMsg"></app-loading-spinner>
-
+          <!-- <span class="text-danger" *ngIf="errorMsg">
+            {{errorMsg}}
+          </span> -->
         </p>
+        <div *ngIf="errorMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Erreur : </strong> {{errorMsg}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,107 @@
+<div class="col mx-6 my-6">
+
+  <div class="mx-auto col-lg-6 col-10">
+    <h1 class="text-center mt-0 text-warning">
+      Inscription
+    </h1>
+    <p class="text-center mb-3">
+      Bienvenu sur notre plateforme | System TeneT, Veuillez vous incrire pour bénéficier de nos
+      services.
+    </p>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="text-left">
+
+      <div class="form-group">
+        <label for="prenom">Prénom:</label>
+        <input type="text" class="form-control" formControlName="prenom" placeholder="Votre prenom"
+          [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }">
+        <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
+          <div *ngIf="f['prenom'].errors['required']">Champ Prénom requis</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" class="form-control" formControlName="nom" placeholder="Votre nom" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }">
+        <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+          <div *ngIf="f['nom'].errors['required']">Champ Nom requis</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Votre email" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Champ email requis</div>
+          <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Téléphone:</label>
+        <input type="text" class="form-control" formControlName="numero" placeholder="770001122" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }">
+        <div *ngIf="submitted && f['numero'].errors" class="invalid-feedback">
+          <div *ngIf="f['numero'].errors['required']">Champ Telephone requis</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Type:</label>
+        <select class="form-control" formControlName="profil" >
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>
+      <!-- <div class="form-group">
+                <label for="login" id="log" hidden="true">Votre login:</label>
+                <input type="text" ['required'] class="form-control" id="login" hidden="true" name="login"
+                    placeholder="Votre login" >
+            </div> -->
+      <div class="row">
+
+        <div class="form-group col-md-6">
+          <label>Password</label>
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">Password is required</div>
+            <div *ngIf="f['password'].errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+            <div *ngIf="f['password'].errors['maxlength']">
+              Username must not exceed 40 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" formControlName="confirmPassword" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" />
+          <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+            <div *ngIf="f['confirmPassword'].errors['required']">
+              Confirm Password is required
+            </div>
+            <div *ngIf="f['confirmPassword'].errors['mustMatch']">
+              Confirm Password does not match
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group buttons">
+        <button type="submit" class="btn btn-primary form-button"> Sign Up </button>
+        <button type="reset" class="btn btn-warning form-button" (click)="onReset()"> Reset </button>
+      </div>
+    </form>
+    <p class="text-right">
+      Déjà inscrit: <a routerLink="/signIn" routerLinkActive="active">CONNEXION</a>
+      <app-loading-spinner *ngIf="isLoading && !successMsg && !errorMsg"></app-loading-spinner>
+      <!-- <span class="bg-danger text-white" >
+         {{errorMsg}}
+      </span> -->
+    </p>
+    <div *ngIf="errorMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Erreur : </strong> {{errorMsg}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
