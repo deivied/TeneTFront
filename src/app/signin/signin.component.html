@@ -3,14 +3,28 @@
     <div class="row">
       <div class="mx-auto col-md-6 col-10 p-5">
         <h2 class="mb-4 text-warning">Connexion</h2>
-        <form [formGroup]="formSignIn">
+
+        <form [formGroup]="formSignIn" (ngSubmit)="onSignIn()">
+
           <div class="form-group mb-3">
-            <input type="email" class="form-control" placeholder="Entrer votre email" formControlName="email" id="login" name="email" required>
+            <input type="email" class="form-control" placeholder="Entrer votre email" formControlName="email" id="login"
+              name="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Champ email requis</div>
+              <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
           </div>
 
           <div class="form-group mb-3">
-            <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Mot de passe" required>
+            <input type="password" id="password" class="form-control" formControlName="password"
+              placeholder="Mot de passe" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+              <div *ngIf="f['password'].errors['required']">
+                Confirm Password is required
+              </div>
+            </div>
           </div>
+
           <div class="form-group mb-3">
             <select class="form-control" formControlName="profil" id="profil" name="profil"> Profil
               <option>admin</option>
@@ -18,11 +32,11 @@
             </select>
           </div>
           <div class="">
-            <button type="submit" class="btn btn-warning" (click)="onSignIn()" >Connexion </button>
+            <button type="submit" class="btn btn-warning">Connexion </button>
           </div>
         </form>
         <p class="text-right form-text"> Vous êtes nouveau,
-          <a routerLink="/signUp" routerLinkActive="active" >
+          <a routerLink="/signUp" routerLinkActive="active">
             Inscrivez vous!
           </a>
           <app-loading-spinner *ngIf="isLoading && !errorMsg"></app-loading-spinner>

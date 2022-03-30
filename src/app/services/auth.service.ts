@@ -31,26 +31,21 @@ export class AuthService {
   }
 
 
-  login(email: string, password: string, profil: string): Observable<any> {
-    return this.http.post<any>(`${environment.BASE_API_URI}/signIn`, { email, password, profil })
-      .pipe(
-        map(response => {
-          if (response.status === 'success') {
-            localStorage.setItem('currentUser', JSON.stringify(response.payload.user));
-            localStorage.setItem('tokenUser', JSON.stringify(response.payload.token));
-            this.currentUserSubject$.next(response.payload.user);
-            this.tokenUserSubject$.next(response.payload.token)
-            return response.payload.user;
-          }
-          if(response.status === 'error'){
-            return response.message;
-          }
-        }));
+  // login(email: string, password: string, profil: string): Observable<any> {
+  //   return this.http.post<any>(`${environment.BASE_API_URI}/signIn`, { email, password, profil })
+  //     .pipe(
+  //       map(response => {
+  localStore(response: any) {
+    localStorage.setItem('currentUser', JSON.stringify(response.payload.user));
+    localStorage.setItem('tokenUser', JSON.stringify(response.payload.token));
+    this.currentUserSubject$.next(response.payload.user);
+    this.tokenUserSubject$.next(response.payload.token)
+    return response.payload.user;
   }
-
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('tokenUser');
     this.currentUserSubject$.next({} as IUser);
     //document.location.reload(true);
   }

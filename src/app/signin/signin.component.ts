@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
 import { AuthService } from '../services/auth.service';
@@ -25,8 +25,7 @@ export class SigninComponent implements OnInit {
     private router: Router,
     private authService: UserService,
     private fb: FormBuilder,
-    private http: HttpClient,
-    private route$: ActivatedRoute
+    private authInf: AuthService
   ) {
 
   }
@@ -42,8 +41,18 @@ export class SigninComponent implements OnInit {
       profil: ['', Validators.required]
     });
   }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.formSignIn.controls;
+  }
+
   onSignIn() {
     this.submitted = true;
+
+    if (this.formSignIn.invalid) {
+      this.isLoading = false;
+      return;
+    }
     this.isLoading = true;
     console.log(this.formSignIn.value.email);
     this.authService
@@ -52,7 +61,7 @@ export class SigninComponent implements OnInit {
       .subscribe({
         next: res => {
           if (res.status === "success") {
-
+            this.authInf.localStore(res)
             this.isLoading = false;
             this.router.navigateByUrl('/userHome')
           }
@@ -69,14 +78,12 @@ export class SigninComponent implements OnInit {
         complete: () => { }
       })
 
-}
+  }
 
-    //   },
-    //   error => {
-    //     this.isLoading = false;
-    //     this.errorMsg = error;
-    //   }
-    // )
+  onLoggedOut(){
+    this.authInf.logout();
+  }
+
   onClick() {
     this.router.navigateByUrl('/signUp');
   }

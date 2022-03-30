@@ -15,6 +15,10 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
+    path:'profil',
+    component:HomeComponent
+  },
+  {
     path:'signUp',
     component:RegisterComponent
   },

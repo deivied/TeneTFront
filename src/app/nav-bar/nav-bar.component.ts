@@ -12,6 +12,9 @@ export class NavBarComponent implements OnInit {
 
   user!: IUser;
   isGranted!: boolean;
+  isLoggedIn!: boolean;
+  showAdminBoard!: string;
+  title = 'TenetNgMaterial';
 
   constructor(
     private router: Router,
@@ -20,6 +23,9 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.currentUserValue;
+    this.showAdminBoard = this.authService.tokenUserValue.profil;
+    this.user = this.authService.currentUserValue;
+    this.isLoggedIn = this.authService.currentUserValue ? this.authService.currentUserValue.isGranted : false;
   }
 
   onSignUp() {
@@ -30,9 +36,13 @@ export class NavBarComponent implements OnInit {
     this.router.navigateByUrl('signIn')
   }
 
-  logOut(){
+  onLogout(){
     this.authService.logout()
     this.router.navigateByUrl('')
-    this.isGranted = false;
+    this.isLoggedIn = false;
+  }
+
+  onProfil(){
+    this.router.navigateByUrl('/profil')
   }
 }

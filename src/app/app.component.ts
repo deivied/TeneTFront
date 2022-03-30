@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { IUser } from './shared/user/user.model';
 
 @Component({
   selector: 'app-root',
@@ -6,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  isGranted?: boolean;
-  title = 'TenetNgMaterial';
 
-  constructor(){
+  isLoggedIn!: boolean;
+  showAdminBoard!: string;
+  title = 'TenetNgMaterial';
+  user!:IUser;
+
+  constructor(private authInf: AuthService){
 
   }
 
   ngOnInit(): void {
-      this.isGranted = false;
+
   }
 }
