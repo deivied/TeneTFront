@@ -21,7 +21,6 @@ export class ProfilComponent implements OnInit {
   }
 
   onSubmitProfil(form: NgForm){
-    this.
   }
 
 }
