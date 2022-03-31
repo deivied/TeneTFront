@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_API_URI: 'http://localhost:9990'
+  API_SERVER: 'https://tenet-ng-material-backend.herokuapp.com'
 };
