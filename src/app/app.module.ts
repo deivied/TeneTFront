@@ -12,6 +12,7 @@ import { HomesComponent } from './homes/homes.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     NavBarComponent,
     HomesComponent,
     AppComponent,
+    ProfilComponent,
   ],
   imports: [
     BrowserModule,

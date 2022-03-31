@@ -6,6 +6,7 @@ export interface IUser{
   numero: string
   profil: string
   isGranted: boolean
+  profiluser?: object
   password?: string
   token:string
 }

@@ -63,7 +63,7 @@ export class SigninComponent implements OnInit {
           if (res.status === "success") {
             this.authInf.localStore(res)
             this.isLoading = false;
-            this.router.navigateByUrl('/userHome')
+            this.router.navigate(['userHome'])
           }
           else {
             this.isLoading = false;

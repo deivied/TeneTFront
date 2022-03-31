@@ -1,0 +1,107 @@
+<div class="container rounded mt-5 mb-5">
+
+  <form  >
+
+    <div class="row">
+
+      <div class="col-md-3 border-right">
+
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img class="rounded-circle mt-5" width="150px" src="../../assets/img/profil.jpg">
+          <span class="font-weight-bold">
+            {{user.prenom}}
+          </span>
+          <span class="text-black-50">
+            {{ user.nom }}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="col-md-5 border-right">
+
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="text-warning">Profile Settings</h3>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label class="labels">Peudonyme</label>
+              <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudi" name="pseudo"
+               >
+
+            </div>
+
+            <div class="col-md-6">
+              <label class="labels">Photo Profil</label>
+              <input type="file" class="form-control" value="" placeholder="Tof profil" name="repseudo">
+            </div>
+          </div>
+
+          <div class="row mt-3">
+
+            <div class="col-md-12">
+              <label class="labels">Mail secondaire</label>
+              <input type="email" class="form-control" placeholder="Votre email secondaire" name="tel">
+            </div>
+
+            <div class="col-md-12">
+              <label class="labels">Adresse 1</label>
+              <input type="text" class="form-control" placeholder="Votre adresse actuelle n°1" name="addressUn">
+            </div>
+
+            <div class="col-md-12">
+              <label class="labels">Addresse 2</label>
+              <input type="text" class="form-control" placeholder="Votre adresse actuelle n°2" name="addressDeux">
+            </div>
+
+            <div class="col-md-12">
+              <label class="labels">Code Postale</label>
+              <input type="text" class="form-control" placeholder="Code postale Ex : 15000" name="codePostal">
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+
+            <div class="col-md-6">
+              <label class="labels">Pays</label>
+              <input type="text" class="form-control" placeholder="Votre pays" name="pays">
+            </div>
+
+            <div class="col-md-6">
+              <label class="labels">Region</label>
+              <input type="text" class="form-control" value="" placeholder="Region actuelle" name="region">
+            </div>
+
+          </div>
+
+          <div class="mt-5 text-center">
+            <button class="btn btn-warning" type="submit">
+              Save Profile
+            </button>
+            <button class="btn btn-primary" type="reset">
+              Reset
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4 border-right">
+
+        <div class="p-3 py-5">
+          <h3 class="text-warning">
+          </h3>
+          <ul>
+
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </form>
+</div>

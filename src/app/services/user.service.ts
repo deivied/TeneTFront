@@ -18,4 +18,8 @@ export class UserService {
   login(auth: IUser):Observable<any>{
     return this.http.post(`${environment.BASE_API_URI}/signIn`, auth) as Observable<any>;
   }
+
+  profil(profil: IUser): Observable<any>{
+    return this.http.post(`${environment.BASE_API_URI}/profilUser`, profil) as Observable<any>;
+  }
 }
