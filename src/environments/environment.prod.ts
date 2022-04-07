@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_SERVER: 'https://tenet-ng-material-backend.herokuapp.com'
+  API_SERVER: 'https://tenet-backend-app.herokuapp.com/'
 };
