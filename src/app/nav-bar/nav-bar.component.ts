@@ -23,7 +23,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.currentUserValue;
-    this.showAdminBoard = this.authService.tokenUserValue.profil;
+    this.showAdminBoard = this.authService.tokenUserValue.profil || 'Invite';
     this.user = this.authService.currentUserValue;
     this.isLoggedIn = this.authService.currentUserValue ? this.authService.currentUserValue.isGranted : false;
   }

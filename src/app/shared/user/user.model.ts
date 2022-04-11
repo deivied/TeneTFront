@@ -4,7 +4,7 @@ export interface IUser{
   nom: string
   email: string
   numero: string
-  profil: string
+  profil?: string
   isGranted: boolean
   profiluser?: object
   password?: string
